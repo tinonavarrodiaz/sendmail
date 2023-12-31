@@ -1,27 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* @apply bg-slate-300 text-slate-100/95; */
+  /* background: #050505; */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* color: #fdfdfd; */
+}
+input {
+  @apply px-2 w-full block;
+}
+input:focus {
+  box-shadow: none;
+  outline: none;
+}
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  @apply -top-3 text-white/60;
+}
+textarea {
+  @apply px-2;
+}
+textarea:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+textarea:focus,
+textarea:not(:placeholder-shown) {
+  @apply h-32;
+}
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+  @apply -top-3 left-2 translate-y-[-50%] text-white/60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
